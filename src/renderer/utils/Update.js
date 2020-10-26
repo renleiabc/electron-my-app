@@ -2,14 +2,14 @@
  * @Author: abc
  * @Date: 2020-10-25 18:33:27
  * @LastEditors: abc
- * @LastEditTime: 2020-10-25 19:56:07
+ * @LastEditTime: 2020-10-26 18:35:24
  * @Description:
  */
 import { autoUpdater } from "electron-updater";
 import { ipcMain } from "electron"; // ipcMain 主线程
 let mainWindow = null;
 let versionInfo = null;
-export function updateHandle(win, feedUrl) {
+export function updateHandle(win) {
   mainWindow = win;
   let message = {
     error: "检查更新出错",
@@ -18,7 +18,7 @@ export function updateHandle(win, feedUrl) {
     updateNotAva: "现在使用的就是最新版本，不用更新"
   };
   //设置更新包的地址
-  autoUpdater.setFeedURL(feedUrl);
+  // autoUpdater.setFeedURL(feedUrl);
   //监听升级失败事件
   autoUpdater.on("error", function () {
     sendUpdateMessage(message.error);

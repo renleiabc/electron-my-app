@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-24 16:13:49
  * @LastEditors: abc
- * @LastEditTime: 2020-10-26 17:38:31
+ * @LastEditTime: 2020-10-26 18:47:45
  * @Description:vue 配置文件
  */
 const path = require("path");
@@ -63,7 +63,14 @@ module.exports = {
         mac: {
           icon: "./public/img/icons/512.icns"
         },
-        publish: ["github"],
+        publish: {
+          provider: "github",
+          repo: "electron-my-app", // git仓库
+          owner: "renleiabc", // 拥有者
+          token: "b68c40e0d3c50dd0bf7f1277817f3284ebb4de25", // gitToken
+          releaseType: "release",
+          publishAutoUpdate: true // 发布自动更新（需要配置GH_TOKEN）。 默认true
+        },
         /*  publish: [
           {
             provider: "generic", // 服务器提供商 也可以是GitHub等等
