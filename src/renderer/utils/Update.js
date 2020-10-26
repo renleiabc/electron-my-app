@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-25 18:33:27
  * @LastEditors: abc
- * @LastEditTime: 2020-10-26 18:35:24
+ * @LastEditTime: 2020-10-26 19:06:29
  * @Description:
  */
 import { autoUpdater } from "electron-updater";
@@ -17,6 +17,7 @@ export function updateHandle(win) {
     updateAva: "检测到新版本，正在下载……",
     updateNotAva: "现在使用的就是最新版本，不用更新"
   };
+  autoUpdater.checkForUpdatesAndNotify();
   //设置更新包的地址
   // autoUpdater.setFeedURL(feedUrl);
   //监听升级失败事件
