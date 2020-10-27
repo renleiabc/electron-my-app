@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-24 16:13:49
  * @LastEditors: abc
- * @LastEditTime: 2020-10-26 17:38:31
+ * @LastEditTime: 2020-10-27 11:25:46
  * @Description:vue 配置文件
  */
 const path = require("path");
@@ -63,7 +63,13 @@ module.exports = {
         mac: {
           icon: "./public/img/icons/512.icns"
         },
-        publish: ["github"],
+        publish: [
+          {
+            provider: "github",
+            url:
+              "https://github.com/renleiabc/electron-my-app/releases/download/"
+          }
+        ],
         /*  publish: [
           {
             provider: "generic", // 服务器提供商 也可以是GitHub等等
@@ -79,7 +85,7 @@ module.exports = {
           installerHeaderIcon: "./public/img/icons/favicon.ico", // 安装时头部图标
           createDesktopShortcut: true, // 创建桌面图标
           createStartMenuShortcut: true, // 创建开始菜单图标
-          shortcutName: "vue" // 图标名称
+          shortcutName: "electorn-my-app" // 图标名称
         }
       }
     }

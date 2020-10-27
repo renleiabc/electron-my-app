@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-23 18:46:29
  * @LastEditors: abc
- * @LastEditTime: 2020-10-26 09:59:22
+ * @LastEditTime: 2020-10-27 10:16:52
  * @Description: 
 -->
 <template>
@@ -114,7 +114,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: red;
+  background: lime;
 }
 
 #nav {

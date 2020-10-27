@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-23 18:50:47
  * @LastEditors: abc
- * @LastEditTime: 2020-10-26 18:35:54
+ * @LastEditTime: 2020-10-27 10:12:37
  * @Description:
  */
 "use strict";
@@ -13,7 +13,7 @@ import { updateHandle } from "./renderer/utils/Update";
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-// let feedUrl = "http://127.0.0.1:5501/download/"; // 下载地址，不加后面的**.exe
+let feedUrl = "https://github.com/renleiabc/electron-my-app/releases/download"; // 下载地址，不加后面的**.exe
 
 let win;
 // Scheme must be registered before the app is ready
@@ -65,8 +65,8 @@ async function createWindow() {
     win.webContents.openDevTools();
   });
   //检测版本更新
-  //updateHandle(win, feedUrl);
-  updateHandle(win);
+  updateHandle(win, feedUrl);
+  //updateHandle(win);
 }
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
