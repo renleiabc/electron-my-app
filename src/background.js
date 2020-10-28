@@ -2,22 +2,15 @@
  * @Author: abc
  * @Date: 2020-10-23 18:50:47
  * @LastEditors: abc
- * @LastEditTime: 2020-10-28 12:34:25
+ * @LastEditTime: 2020-10-28 16:33:05
  * @Description:
  */
 "use strict";
-import {
-  Menu,
-  app,
-  protocol,
-  BrowserWindow,
-  globalShortcut,
-  dialog
-} from "electron";
+import { Menu, app, protocol, BrowserWindow, globalShortcut } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-//import { updateHandle } from "./renderer/utils/Update";
-import { autoUpdater } from "electron-updater";
+import { updateHandle } from "./renderer/utils/Update";
+//import { autoUpdater } from "electron-updater";
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -65,7 +58,7 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
     //检测版本更新
-    autoUpdater.checkForUpdates();
+    //autoUpdater.checkForUpdates();
   }
 
   win.on("closed", () => {
@@ -75,7 +68,7 @@ async function createWindow() {
     win.webContents.openDevTools();
   });
   //检测版本更新
-  // updateHandle(win);
+  updateHandle(win);
   //updateHandle(win);
 }
 // Quit when all windows are closed.
@@ -134,7 +127,7 @@ app.on("ready", async () => {
   }
   createWindow();
 });
-autoUpdater.on("checking-for-update", () => {});
+/* autoUpdater.on("checking-for-update", () => {});
 autoUpdater.on("update-available", (info) => {
   console.log(info);
   dialog.showMessageBox({
@@ -151,7 +144,7 @@ autoUpdater.on("update-available", (info) => {
 autoUpdater.on("update-downloaded", (info) => {
   console.log(info);
   autoUpdater.quitAndInstall();
-});
+}); */
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === "win32") {
