@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-24 16:13:49
  * @LastEditors: abc
- * @LastEditTime: 2020-10-28 12:27:37
+ * @LastEditTime: 2020-10-28 18:27:36
  * @Description:vue 配置文件
  */
 const path = require("path");
@@ -64,14 +64,12 @@ module.exports = {
           icon: "./public/img/icons/512.icns"
         },
         publish: [
-          "github"
-        ] /* [
           {
             provider: "github",
-            url:
-              "https://github.com/renleiabc/electron-my-app/releases/download/"
+            owner: "renleiabc",
+            repo: "electron-my-app"
           }
-        ], */,
+        ],
         /*  publish: [
           {
             provider: "generic", // 服务器提供商 也可以是GitHub等等
@@ -80,6 +78,7 @@ module.exports = {
         ], */
         nsis: {
           oneClick: false, // 是否一键安装
+          perMachine: false,
           allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
           allowToChangeInstallationDirectory: true, // 允许修改安装目录
           installerIcon: "./public/img/icons/favicon.ico", // 安装图标
