@@ -2,14 +2,22 @@
  * @Author: abc
  * @Date: 2020-10-23 18:50:47
  * @LastEditors: abc
- * @LastEditTime: 2020-10-28 11:41:13
+ * @LastEditTime: 2020-10-28 12:34:25
  * @Description:
  */
 "use strict";
-import { Menu, app, protocol, BrowserWindow, globalShortcut } from "electron";
+import {
+  Menu,
+  app,
+  protocol,
+  BrowserWindow,
+  globalShortcut,
+  dialog
+} from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-import { updateHandle } from "./renderer/utils/Update";
+//import { updateHandle } from "./renderer/utils/Update";
+import { autoUpdater } from "electron-updater";
 const isDevelopment = process.env.NODE_ENV !== "production";
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -56,6 +64,8 @@ async function createWindow() {
     createProtocol("app");
     // Load the index.html when not in development
     win.loadURL("app://./index.html");
+    //检测版本更新
+    autoUpdater.checkForUpdates();
   }
 
   win.on("closed", () => {
@@ -65,7 +75,7 @@ async function createWindow() {
     win.webContents.openDevTools();
   });
   //检测版本更新
-  updateHandle(win);
+  // updateHandle(win);
   //updateHandle(win);
 }
 // Quit when all windows are closed.
@@ -124,7 +134,24 @@ app.on("ready", async () => {
   }
   createWindow();
 });
-
+autoUpdater.on("checking-for-update", () => {});
+autoUpdater.on("update-available", (info) => {
+  console.log(info);
+  dialog.showMessageBox({
+    title: "新版本发布",
+    message: "有新内容更新，稍后将重新为您安装",
+    buttons: ["确定"],
+    type: "info",
+    noLink: true
+  });
+});
+// autoUpdater.on("update-not-available", (info) => {});
+// autoUpdater.on("error", (err) => {});
+// autoUpdater.on("download-progress", (progressObj) => {});
+autoUpdater.on("update-downloaded", (info) => {
+  console.log(info);
+  autoUpdater.quitAndInstall();
+});
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === "win32") {

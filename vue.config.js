@@ -2,7 +2,7 @@
  * @Author: abc
  * @Date: 2020-10-24 16:13:49
  * @LastEditors: abc
- * @LastEditTime: 2020-10-27 11:25:46
+ * @LastEditTime: 2020-10-28 12:27:37
  * @Description:vue 配置文件
  */
 const path = require("path");
@@ -64,12 +64,14 @@ module.exports = {
           icon: "./public/img/icons/512.icns"
         },
         publish: [
+          "github"
+        ] /* [
           {
             provider: "github",
             url:
               "https://github.com/renleiabc/electron-my-app/releases/download/"
           }
-        ],
+        ], */,
         /*  publish: [
           {
             provider: "generic", // 服务器提供商 也可以是GitHub等等
